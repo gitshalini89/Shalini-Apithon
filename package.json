@@ -2,6 +2,8 @@
   "name": "prudent",
   "version": "1.0.0",
   "description": "react app for prudent",
+  "main": "index.js",
+  
   "engines": {
     "npm": "5.7.1",
     "node": "9.5.0"
