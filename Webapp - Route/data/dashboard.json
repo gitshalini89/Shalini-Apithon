@@ -1,0 +1,16 @@
+{
+  "_id": "7b85bdc21f307b66e499e854a7a058af",
+  "_rev": "2-4af67b9a02af04e51e134818a546a8e4",
+  "AccountId": "2b91d153-4ca2-40ba-a6dc-92bc1346da37",
+  "totalIncome": 45000,
+  "CrucialExp": 5000,
+  "ImpExp": 3000,
+  "MedExp": 2000,
+  "trivalExp": 4500,
+  "CrucialExpDay": 13,
+  "ImpExpDay": 12,
+  "MedExpDay": 10,
+  "TrivalExpDay": 12,
+  "SavingCapacity": 200,
+  "SavingCapcityDay": 2
+}
