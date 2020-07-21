@@ -11,7 +11,7 @@
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
     "dev": "webpack-dev-server --hot --mode development",
-    "prod": "webpack-dev-server --hot"
+    "prod": "webpack"
   },
   "author": "",
   "license": "ISC",
