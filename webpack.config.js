@@ -1,8 +1,13 @@
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
+
 var config = {
     entry: './main.js',
     output: {
-        filename: 'dist/index.js',
+        path: path.resolve(__dirname, './dist'),
+        filename: 'index_bundle.js'
     },
+    plugins: [new HtmlWebpackPlugin()],
     devServer: {
         historyApiFallback: true,
         inline: true,
