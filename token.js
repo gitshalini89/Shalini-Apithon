@@ -6,7 +6,7 @@ export async function getapitoken(acctdata, authcode) {
         const clientid = 'jf9K_-Lr__HjaqsXiE3J5pEM-kI3C7iVTkLaZ7b_qZU='
         const clientsecret = 'IQD1pi0UnSz4dHBgfyUGtPtJg2rzClVki0thIhrSDi0='
         const x = '5d7a1378-222e-42ab-99e7-041b2b9393ff'
-        const redirecturi = 'http%3A%2F%2zforceapithon1.netlify.app%2Fonboarding'
+        const redirecturi = 'https%3A%2F%2zforceapithon1.netlify.app%2Fonboarding'
 
         const requestoptions = {
             method: 'POST',

@@ -89,7 +89,7 @@ export async function GetAccountConsent(clientid, consent_id) {
 
     try {
         const acctbaseurl = 'https://api.natwest.useinfinite.io/authorize';
-        const encodedRedirectUrl = 'http%3A%2F%2zforceapithon1.netlify.app%2Fonboarding';
+        const encodedRedirectUrl = 'https%3A%2F%2zforceapithon1.netlify.app%2Fonboarding';
         //const domain = '9c2a361b-8e35-43ff-b2d0-17b70bfa3864.example.org';
         const query = '?client_id='+clientid+'&response_type=code id_token&scope=openid accounts&redirect_uri='+encodedRedirectUrl+'&state=ABC&request='+consent_id;
         const authorizeurl = acctbaseurl + query;
