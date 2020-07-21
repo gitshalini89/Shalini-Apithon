@@ -2,7 +2,7 @@ var config = {
     entry: './main.js',
     output: {
 
-        filename: 'dist/index.js',
+        filename: 'index.js',
     },
     devServer: {
         historyApiFallback: true,
