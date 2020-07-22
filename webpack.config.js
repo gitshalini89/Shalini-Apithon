@@ -4,6 +4,11 @@ var config = {
 
         filename: 'index.js',
     },
+    devServer: {
+        historyApiFallback: true,
+        inline: true,
+        port: 5000
+    },
     module: {
         rules: [
             {
