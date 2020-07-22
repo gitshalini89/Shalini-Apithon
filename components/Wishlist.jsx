@@ -6,6 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 import { withRouter } from 'react-router-dom';
+import CardComponent from "./common/Card.jsx";
 //axios
 import axios from 'axios';
 
@@ -15,7 +16,11 @@ class WishlistComponent extends Component {
         super(props);
         this.state = {
             TargetAmount: 0,
-            TargetDate: ''
+            TargetDate: '',
+            wishData: {},
+            callResult: '',
+            isLoading: true,
+            errors: null,
         };
         this.handleTargetAmount = this.handleTargetAmount.bind(this);
         this.handleTargetDate = this.handleTargetDate.bind(this);
@@ -24,15 +29,25 @@ class WishlistComponent extends Component {
     }
 
     handlePostWish() {
-      axios.post('/postIt', {
-        targetAmount: this.state.TargetAmount,
-        targetDate: this.state.TargetDate
+      axios.post('https://d52f24be.eu-gb.apigw.appdomain.cloud/cw/ost', {
+        TargetDate: this.state.TargetDate,
+        // TargetAmount: 20000
+        TargetAmount: parseInt(this.state.TargetAmount)
       })
       .then((response) => {
-        console.log(response);
+        this.setState({ wishData: response.data.newwishlist, callResult: response.data.responseCode })
+        alert('Wishlist Posted Successfully')
       }, (error) => {
-        console.log(error);
+        this.setState({ error, isLoading: false })
+        alert('Wishlist Posting Failed!')
       });
+    }
+
+    getData() {
+      axios
+        .get("./data/wishList.json")
+        .then((response) => this.setState({ wishData: response.data.result, callResult: response.data.returnCode }))
+        .catch((error) => this.setState({ error, isLoading: false }));
     }
 
     handleTargetAmount(event) {
@@ -45,13 +60,11 @@ class WishlistComponent extends Component {
 
     handleSubmit(event) {
        event.preventDefault();
-       handlePostWish();
-        // const data = {
-        //     TargetAmount: this.state.TargetAmount,
-        //     TargetDate: this.state.TargetDate
-        // };
-        // Login(JSON.stringify(data));
-        // this.props.history.push('/dashboard');
+       this.handlePostWish();
+    }
+
+    componentDidMount() {
+      // this.getData();
     }
 
     render() {
@@ -67,6 +80,7 @@ class WishlistComponent extends Component {
                  hintText="Enter your Target Amount"
                  floatingLabelText="Target Amount"
                  required
+                 pattern="^\d*(\.\d{0,2})?$"
                  id="TargetAmt"
                  name='TargetAmt'
                  onChange = {this.handleTargetAmount}
@@ -83,13 +97,16 @@ class WishlistComponent extends Component {
                    onChange = {this.handleTargetDate}
                    />
                 <br/>
-                <RaisedButton label="  Submit  " primary={true} style={style} type='Submit'/>
-                <h3>Wishlist</h3>
-                <ul>
-                  <li>
-                    <h4>None Found</h4>
-                  </li>
-                </ul>
+                <RaisedButton label="  Evaluate  " primary={true} style={style} type='Submit'/>
+                {this.state.callResult==="1000" &&
+                  <CardComponent
+                    title={this.state.wishData.Possible==="NO" ? "Evaluation Result: Not Achievable" : "Evaluation Result: Achievable"} 
+                    subTitle={(this.state.wishData.Possible==="NO" ? "Target is Not Achievable on " + this.state.wishData.IntendedTargetDate + " but Achievable " : "Target is Achievable ") + "on " + this.state.wishData.ActualTargetDate}
+                    color={this.state.wishData.Possible==="NO" ? "red" : "green"} 
+                    width="600px"
+                    dashData="" 
+                  />
+                }
              </div>
              </MuiThemeProvider>
              </Form>

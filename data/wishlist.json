@@ -1,0 +1,9 @@
+{
+  "result": {
+    "ActualTargetDate": "2020-10-19",
+    "IntendedTargetDate": "2020-10-10",
+    "Possible": "NO",
+    "TargetAmount": 1200
+  },
+  "returnCode": "1000"
+}

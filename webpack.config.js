@@ -4,7 +4,6 @@ var config = {
 
         filename: 'index.js',
     },
-
     devServer: {
         historyApiFallback: true,
         inline: true,
