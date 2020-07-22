@@ -10,7 +10,7 @@
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
     "dev": "webpack-dev-server --hot --mode development",
     "prod": "webpack-dev-server --hot",
-    "build": "webpack -p --config webpack.config.js"
+    "build": "webpack --mode production --config webpack.config.js"
   },
   "author": "",
   "license": "ISC",
